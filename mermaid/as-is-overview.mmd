@@ -1,0 +1,66 @@
+graph TD
+
+  subgraph Divorce
+    Petitioner
+    Respondent
+    DecreeNisi
+    DecreeAbsolute
+
+    CaseOrchestrator
+    CaseFormatter
+    CaseMaintenance
+    DocGen
+    EvidenceClientAPI
+    DivFeesAndPay
+
+    Petitioner-->CaseOrchestrator
+    Respondent-->CaseOrchestrator
+    DecreeNisi-->CaseOrchestrator
+    DecreeAbsolute-->CaseOrchestrator
+
+    CaseOrchestrator-->CaseMaintenance
+    CaseOrchestrator-->CaseFormatter
+    CaseOrchestrator-->DivFeesAndPay
+    CaseFormatter-->CaseMaintenance
+    CaseOrchestrator-->DocGen
+    DocGen-->EvidenceClientAPI
+  end
+
+  subgraph IDAM
+    WebFrontend
+    IdamAPI
+  end
+
+  subgraph CCD
+    CCDDataStore
+  end
+
+  subgraph EvidenceManagement
+    Docmosis
+    DocStore
+  end
+
+  subgraph RPE
+    DraftStore
+    SendLetterService
+    ServiceAuthProvider
+  end
+
+  subgraph FeesAndPay
+    Payment
+    Fees
+  end
+
+  subgraph ReferenceData
+    ReferenceDataAPI
+  end
+
+  DocGen-->Docmosis
+  EvidenceClientAPI-->DocStore
+  CaseMaintenance-->DraftStore
+  CaseMaintenance-->CCDDataStore
+  CCDDataStore-.->CaseOrchestrator
+  CaseOrchestrator-->Payment
+  CaseOrchestrator-->SendLetterService
+  CaseOrchestrator-->ReferenceDataAPI
+  DivFeesAndPay-->Fees
