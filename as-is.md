@@ -18,6 +18,8 @@ The Case Orchestrator is the primary service within Divorce. It is currently mai
 
 It is primarily responsible for managing the state transitions of cases in CCD. It handles all CCD callbacks.
 
+The Case Orchestrator has a number of Quartz Scheduler jobs that are stored in a postgres database.
+
 It uses up-to-date libraries and appears well tested and maintained.
 
 ### Case Maintenance Service ([CMS](https://github.com/hmcts/div-case-maintenance-service))
@@ -61,3 +63,15 @@ Proxy. Orchestrator connects direct to Pay but uses this proxy for Fees.
 There is no local development environment for divorce. It was decided that the requirements of running CCD locally were too resource intensive so development is primarily done with local unit testing or connecting to AAT to use services there.
 
 The divorce team are looking to reduce the number of integration tests as unreliable common components have frequently broken the build and blocked releases. Instead the team intend to rely on unit tests.
+
+## Infrastructure and pipelines
+
+The divorce service has uses the standard CFT Reform approach to infrastructure. The [shared-infrastructure](https://github.com/hmcts/div-shared-infrastructure) deploys a shared vault and appinsights instance. There is also an [action group mailing list](https://github.com/hmcts/div-shared-infrastructure/blob/master/action-groups.tf).
+
+There is a [helm product chart](https://github.com/hmcts/chart-div) but it is not used by any of the divorce services.
+
+The CCD definition file is maintained in it's [own codebase](https://github.com/hmcts/div-ccd-definitions) that has a build pipeline that automates deployment of any changes to the definition file to AAT.
+
+There are some automated regression tests that log in to CCD and progress a case through some of the standard scenarios.
+
+The definition file repository makes use of the CCD product chart to deploy CCD to preview in order to test changes in a pull request.

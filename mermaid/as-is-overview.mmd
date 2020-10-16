@@ -55,6 +55,10 @@ graph TD
     ReferenceDataAPI
   end
 
+  subgraph GOVuk
+    GovNotify
+  end
+
   DocGen-->Docmosis
   EvidenceClientAPI-->DocStore
   CaseMaintenance-->DraftStore
@@ -63,4 +67,5 @@ graph TD
   CaseOrchestrator-->Payment
   CaseOrchestrator-->SendLetterService
   CaseOrchestrator-->ReferenceDataAPI
+  CaseOrchestrator-->GovNotify
   DivFeesAndPay-->Fees
