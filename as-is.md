@@ -42,12 +42,6 @@ The Document Generation Service is a proxy in front of the Docmosis common compo
 
 It may also house some legacy HTML templates.
 
-### Document Generation Service ([DGS](https://github.com/hmcts/div-document-generator-client))
-
-The Document Generation Service is a proxy in front of the Docmosis common component.
-
-It may also house some legacy HTML templates.
-
 The Tech Lead feels that this service does provide some value by aiding in debugging and regenerating documents.
 
 ### Evidence Management Client API ([EMC](https://github.com/hmcts/div-evidence-management-client-api))
