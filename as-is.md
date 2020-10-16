@@ -82,6 +82,10 @@ There are some automated regression tests that log in to CCD and upload the defi
 
 The definition file repository makes use of the CCD product chart to deploy CCD to preview in order to test changes in a pull request.
 
+### Model
+
+There is not Java definition of the CCD model so case data is handled with HashMaps.
+
 ### State transitions
 
 TODO
