@@ -54,9 +54,11 @@ It only implements a single API call and looks redundant. The most likely explan
 
 The Tech Lead does not believe it required.
 
-### Fees and Pay
+### Fees and Pay ([Fees](https://github.com/hmcts/div-fees-and-payments-service))
 
-Proxy. Orchestrator connects direct to Pay but uses this proxy for Fees.
+A proxy API in front of the Fees API. It appears to be used so that fees can be references without using a fee code.
+
+Usefulness unclear.
 
 ## Approach to development
 
