@@ -1,6 +1,6 @@
 # Overview of Divorce Service
 
-The current divorce service was one of the first delivered as part of CFT Reform. It has been developed and maintained by multiple suppliers during it's life time and currently has three teams actively working on it now.
+The current divorce service was one of the first delivered as part of CFT Reform. It has been developed and maintained by multiple suppliers during it's lifetime and currently has three teams actively working on it.
 
 ## System overview
 
