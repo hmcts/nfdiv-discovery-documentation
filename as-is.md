@@ -72,8 +72,16 @@ The divorce service has uses the standard CFT Reform approach to infrastructure.
 
 There is a [helm product chart](https://github.com/hmcts/chart-div) but it is not used by any of the divorce services.
 
+## CCD
+
+### Definition file
+
 The CCD definition file is maintained in it's [own codebase](https://github.com/hmcts/div-ccd-definitions) that has a build pipeline that automates deployment of any changes to the definition file to AAT.
 
 There are some automated regression tests that log in to CCD and upload the definition file. It's not clear whether the intention is to expand that and add tests that start progressing cases.
 
 The definition file repository makes use of the CCD product chart to deploy CCD to preview in order to test changes in a pull request.
+
+### State transitions
+
+TODO
