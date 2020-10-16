@@ -84,7 +84,7 @@ The definition file repository makes use of the CCD product chart to deploy CCD 
 
 ### Model
 
-There is not Java definition of the CCD model so case data is handled with HashMaps.
+There is no Java definition of the CCD model so case data is handled with HashMaps.
 
 ### State transitions
 
