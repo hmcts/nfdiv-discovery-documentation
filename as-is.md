@@ -54,7 +54,7 @@ It only implements a single API call and looks redundant. The most likely explan
 
 The Tech Lead does not believe it required.
 
-### Fees and Pay ([Fees](https://github.com/hmcts/div-fees-and-payments-service))
+### Fees and Pay Service ([FPS](https://github.com/hmcts/div-fees-and-payments-service))
 
 A proxy API in front of the Fees API. It appears to be used so that fees can be references without using a fee code.
 
