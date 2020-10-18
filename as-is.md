@@ -8,9 +8,20 @@ The system is comprised of six APIs written in Java and four frontends written i
 
 ![divorce overview](/image/as-is-overview.mmd.png)
 
+The Swagger docs for the APIs have not been updated for two years and are likely not relevant any more.
+
 ### Frontends
 
-The frontend services are all node.js based frontends of various ages. The petitioner frontend is quite out of date and relies on several legacy libraries.
+The frontend services are all node.js based frontends of various ages. The petitioner frontend is quite out of date and relies on some legacy libraries.
+
+- https://github.com/hmcts/div-petitioner-frontend
+- https://github.com/hmcts/div-respondent-frontend
+- https://github.com/hmcts/div-decree-nisi-frontend
+- https://github.com/hmcts/div-decree-absolute-frontend
+
+They all make use of the legacy (pre OpenID connect) IDAM endpoints using a custom made [express middleware](https://github.com/hmcts/div-idam-express-middleware).
+
+The frontends have been integrated with CTSC Chat, PCQ and have a Welsh language translation. 
 
 ### Case Orchestrator Service ([COS](https://github.com/hmcts/div-case-orchestration-service))
 
