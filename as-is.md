@@ -6,6 +6,8 @@ The current divorce service was one of the first delivered as part of CFT Reform
 
 The system is comprised of six APIs written in Java and four frontends written in node.js. It makes use of several common components provided by the platform.
 
+There is up to date documentation that provides a system overview so one has been created by inspecting the dependencies at code level. For clarity interactions with IDAM and the service auth provider were not included.
+
 ![divorce overview](/image/as-is-overview.mmd.png)
 
 The Swagger docs for the APIs have not been updated for two years and are likely not relevant any more.
@@ -21,7 +23,7 @@ The frontend services are all node.js based frontends of various ages. The petit
 
 They all make use of the legacy (pre OpenID connect) IDAM endpoints using a custom made [express middleware](https://github.com/hmcts/div-idam-express-middleware).
 
-The frontends have been integrated with CTSC Chat, PCQ and have a Welsh language translation. 
+The frontends have been integrated with CTSC Chat, PCQ and have a Welsh language translation.
 
 ### Case Orchestrator Service ([COS](https://github.com/hmcts/div-case-orchestration-service))
 
@@ -99,4 +101,21 @@ There is no Java definition of the CCD model so case data is handled with HashMa
 
 ### State transitions
 
-TODO
+There is an out-of-date version of the state transitions on [confluence](https://tools.hmcts.net/confluence/pages/viewpage.action?pageId=1196458522). This has been brought up-to-date using our understanding:
+
+![state transitions](/image/as-is-case-states.mmd.png)
+
+There are some discrepancies with the code in the CMS and the CCD definition. The code contains the following states that are not in the definition file:
+
+- AwaitingPetitioner
+- AwaitingConsiderationGeneralApplication
+- AwaitingConsiderationDN
+- ServiceApplicationNotApproved
+
+The following states in the definition file but not used in the code or mentioned in the current documentation:
+
+- AwaitingAdminClarification
+- Created
+- WelshResponseAwaitingReview
+- WelshLADecision
+- WelshDNReceived

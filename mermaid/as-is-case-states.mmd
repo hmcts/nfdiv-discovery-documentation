@@ -1,0 +1,166 @@
+graph TD
+
+  subgraph Petition
+    cit{Citizen Create Case}
+    sol{Solicitor Create Case}
+    AwaitingPayment
+    AwaitingHWFDecision
+    SOTAgreementPayAndSubmitRequired
+    solicitorAwaitingPaymentConfirmation
+    Submitted
+    Withdrawn
+    AwaitingDocuments
+    PendingRejection
+    Issued
+    Rejected
+    AwaitingService
+    AosAwaiting
+    AwaitingReissue
+    DefendedDivorce
+    AosOverdue
+    AwaitingReissue
+  end
+
+  subgraph AOS
+    AosStarted
+    AosAwaitingSol
+    AosSubmittedAwaitingAnswer
+    AosDrafted
+    AosPreSubmit
+    AosCompleted
+    AmendPetition
+    AwaitingDecreeNisi
+    AwaitingAmendCase
+
+  end
+
+  subgraph DecreeNisi
+    DNDrafted
+    AwaitingLegalAdvisorReferral
+    AwaitingConsideration
+    DNisRefused
+    AwaitingClarification
+    AwaitingPronouncement
+    RemovedFromBulkCaseList
+    DNPronounced
+    AwaitingDecreeAbsolute
+    ClarificationSubmitted
+  end
+
+  subgraph DecreeAbsolute
+    DaRequested
+    DAOverdue
+    DivorceGranted
+  end
+
+  %% AwaitingPetitioner %% in code not in CCD
+  %% AwaitingConsiderationGeneralApplication %% in code not in CCD
+  %% AwaitingConsiderationDN %% in code not in CCD
+  %% AwaitingAdminClarification %% in CCD but not used
+  %% ServiceApplicationNotApproved %% in code not CCD
+  %% Created %% not used
+  %% WelshResponseAwaitingReview %% not used
+  %% WelshLADecision %% not used
+  %% WelshDNReceived %% not used
+
+  cit{Citizen Create Case}-->AwaitingHWFDecision
+  cit{Citizen Create Case}-->AwaitingPayment
+
+  AwaitingHWFDecision-->Submitted
+  AwaitingHWFDecision-->AwaitingDocuments
+
+  Submitted-->Issued
+  Submitted<-->AwaitingDocuments
+  Submitted<-->PendingRejection
+
+  AwaitingPayment-->AwaitingDocuments
+  AwaitingPayment<-->Rejected
+  AwaitingPayment-->Submitted
+
+  Withdrawn-->Submitted
+  Withdrawn-->AwaitingHWFDecision
+  Withdrawn-->AwaitingDocuments
+
+  AwaitingDocuments<-->Submitted
+
+  sol{Solicitor Create Case}-->SOTAgreementPayAndSubmitRequired
+  SOTAgreementPayAndSubmitRequired-->Submitted
+  SOTAgreementPayAndSubmitRequired-->
+
+  solicitorAwaitingPaymentConfirmation-->AwaitingDocuments
+  solicitorAwaitingPaymentConfirmation-->Submitted
+  solicitorAwaitingPaymentConfirmation-->Rejected
+
+  AwaitingDocuments<-->Rejected
+  AwaitingDocuments<-->PendingRejection
+
+  PendingRejection-->Issued
+
+  Rejected-->AwaitingReissue
+  Rejected<-->Issued
+
+  Issued-->AwaitingService
+  Issued<-->AosAwaiting
+  Issued<-->AwaitingReissue
+
+  AwaitingService-->AosAwaiting
+
+  AosAwaiting<-->AwaitingReissue
+  AosAwaiting<-->AosStarted
+  AosAwaiting<-->AosOverdue
+
+  AwaitingReissue<-->AosStarted
+
+  AosOverdue<-->AosStarted
+  AosOverdue-->AwaitingReissue
+  AosOverdue-->AosCompleted
+
+  AosStarted-->AosAwaitingSol
+  AosStarted-->AosCompleted
+  AosStarted-->AosSubmittedAwaitingAnswer
+  AosStarted-->AwaitingDecreeNisi
+
+  AosAwaitingSol-->AosAwaiting
+  AosAwaitingSol-->AosOverdue
+  AosAwaitingSol-->AosDrafted
+
+  AosPreSubmit-->AosSubmittedAwaitingAnswer
+  AosPreSubmit-->AosCompleted
+  AosPreSubmit-->AwaitingDecreeNisi
+
+  AosSubmittedAwaitingAnswer-->AwaitingDecreeNisi
+
+  AosCompleted-->AmendPetition
+
+  AmendPetition-->AwaitingLegalAdvisorReferral
+
+  AwaitingAmendCase-->AmendPetition
+
+  AwaitingDecreeNisi-->DNDrafted
+  AwaitingDecreeNisi-->AwaitingLegalAdvisorReferral
+  AwaitingDecreeNisi<-->AwaitingLegalAdvisorReferral
+
+  AwaitingLegalAdvisorReferral-->AwaitingAmendCase
+  AwaitingLegalAdvisorReferral-->AwaitingConsideration
+
+  AwaitingConsideration-->DNisRefused
+  AwaitingConsideration<-->AwaitingClarification
+  AwaitingConsideration-->AwaitingPronouncement
+
+  DNisRefused-->AwaitingPronouncement
+
+  AwaitingClarification-->ClarificationSubmitted
+
+  ClarificationSubmitted-->AwaitingLegalAdvisorReferral
+
+  AwaitingPronouncement-->RemovedFromBulkCaseList
+  AwaitingPronouncement<-->DNPronounced
+  AwaitingPronouncement-->AwaitingDecreeAbsolute
+
+  DNPronounced-->AwaitingDecreeAbsolute
+
+  AwaitingDecreeAbsolute-->DaRequested
+  AwaitingDecreeAbsolute-->DivorceGranted
+  AwaitingDecreeAbsolute-->DAOverdue
+
+  DaRequested-->DivorceGranted
