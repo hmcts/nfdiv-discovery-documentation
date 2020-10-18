@@ -1,0 +1,78 @@
+graph TD
+
+  subgraph Divorce
+    Petitioner
+    class Petitioner newService
+    Respondent
+    class Respondent newService
+    DecreeNisi
+    class DecreeNisi forkedService
+    DecreeAbsolute
+    class DecreeAbsolute forkedService
+
+    CaseOrchestrator
+    class CaseOrchestrator forkedService
+    CaseMaintenance
+    class CaseMaintenance forkedService
+    DocGen
+    class DocGen forkedService
+
+    DivFeesAndPay
+
+    Petitioner-->CaseOrchestrator
+    Respondent-->CaseOrchestrator
+    DecreeNisi-->CaseOrchestrator
+    DecreeAbsolute-->CaseOrchestrator
+
+    CaseOrchestrator-->CaseMaintenance
+    CaseOrchestrator-->DivFeesAndPay
+    CaseOrchestrator-->DocGen
+  end
+
+  subgraph IDAM
+    WebFrontend
+    IdamAPI
+  end
+
+  subgraph CCD
+    CCDDataStore
+  end
+
+  subgraph EvidenceManagement
+    Docmosis
+    DocStore
+  end
+
+  subgraph RPE
+    DraftStore
+    SendLetterService
+    ServiceAuthProvider
+  end
+
+  subgraph FeesAndPay
+    Payment
+    Fees
+  end
+
+  subgraph ReferenceData
+    ReferenceDataAPI
+  end
+
+  subgraph GOVuk
+    GovNotify
+  end
+
+  DocGen-->Docmosis
+  DocGen-->DocStore
+  CaseMaintenance-->DraftStore
+  CaseMaintenance-->CCDDataStore
+  CCDDataStore-.->CaseOrchestrator
+  CaseOrchestrator-->Payment
+  CaseOrchestrator-->SendLetterService
+  CaseOrchestrator-->ReferenceDataAPI
+  CaseOrchestrator-->GovNotify
+  DivFeesAndPay-->Fees
+
+  classDef newService fill:green,stroke:#333,stroke-width:4px
+  classDef forkedService fill:yellow,stroke:#333,stroke-width:4px
+  classDef modifiedService fill:red,stroke:#333,stroke-width:4px

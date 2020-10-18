@@ -1,0 +1,59 @@
+graph TD
+
+  subgraph Divorce
+    CitizenFrontend
+    class CitizenFrontend newService
+    CaseManagementFrontend
+    class CaseManagementFrontend newService
+    CaseService
+    class CaseService newService
+    DocGen
+    class DocGen modifiedService
+
+    CitizenFrontend-->CaseService
+    CaseManagementFrontend-->CaseService
+
+    CaseService-->DocGen
+  end
+
+  subgraph IDAM
+    WebFrontend
+    IdamAPI
+  end
+
+  subgraph EvidenceManagement
+    Docmosis
+  end
+
+  subgraph RPE
+    DraftStore
+    SendLetterService
+    ServiceAuthProvider
+    AzureBlob
+  end
+
+  subgraph FeesAndPay
+    Payment
+    Fees
+  end
+
+  subgraph ReferenceData
+    ReferenceDataAPI
+  end
+
+  subgraph GOVuk
+    GovNotify
+  end
+
+  DocGen-->Docmosis
+  DocGen-->AzureBlob
+  CaseService-->DraftStore
+  CaseService-->Payment
+  CaseService-->Fees
+  CaseService-->SendLetterService
+  CaseService-->ReferenceDataAPI
+  CaseService-->GovNotify
+
+  classDef newService fill:green,stroke:#333,stroke-width:4px
+  classDef forkedService fill:yellow,stroke:#333,stroke-width:4px
+  classDef modifiedService fill:red,stroke:#333,stroke-width:4px
