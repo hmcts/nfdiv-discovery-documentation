@@ -76,6 +76,8 @@ While there are both types of divorce case in use any changes that impact both w
 
 Any changes to common components, such as CCD, would block the project and prevent it's completion.
 
+The current CCD definition file will be actively developed until January and the codebases will likely be developed beyond that so picking a point to fork from may be difficult.
+
 ## 3) Maximum re-use
 
 This approach also leverages as much existing code as possible but also ties the infrastructure together with the existing divorce service so that any changes that impact both types of divorce can be implemented in a single location.

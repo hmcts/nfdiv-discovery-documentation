@@ -45,6 +45,7 @@ graph TD
     DNPronounced
     AwaitingDecreeAbsolute
     ClarificationSubmitted
+    AwaitingAdminClarification
   end
 
   subgraph DecreeAbsolute
@@ -56,7 +57,6 @@ graph TD
   %% AwaitingPetitioner %% in code not in CCD
   %% AwaitingConsiderationGeneralApplication %% in code not in CCD
   %% AwaitingConsiderationDN %% in code not in CCD
-  %% AwaitingAdminClarification %% in CCD but not used
   %% ServiceApplicationNotApproved %% in code not CCD
   %% Created %% not used
   %% WelshResponseAwaitingReview %% not used
@@ -72,6 +72,7 @@ graph TD
   Submitted-->Issued
   Submitted<-->AwaitingDocuments
   Submitted<-->PendingRejection
+  Submitted-->Rejected
 
   AwaitingPayment-->AwaitingDocuments
   AwaitingPayment<-->Rejected
@@ -108,6 +109,7 @@ graph TD
   AosAwaiting<-->AwaitingReissue
   AosAwaiting<-->AosStarted
   AosAwaiting<-->AosOverdue
+  AosAwaiting-->DefendedDivorce
 
   AwaitingReissue<-->AosStarted
 
@@ -148,8 +150,11 @@ graph TD
   AwaitingConsideration-->AwaitingPronouncement
 
   DNisRefused-->AwaitingPronouncement
+  DNisRefused-->DNisRefused
 
   AwaitingClarification-->ClarificationSubmitted
+
+  AwaitingAdminClarification-->ClarificationSubmitted
 
   ClarificationSubmitted-->AwaitingLegalAdvisorReferral
 
