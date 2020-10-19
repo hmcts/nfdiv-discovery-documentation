@@ -8,7 +8,7 @@ A forked service has been split in a way where there will be two versions mainta
 
 ## Minimal re-use
 
-This approach would make use of the CFT Common Components but none of the existing divorce services.
+This approach would make use of some of the CFT Common Components but none of the existing divorce services.
 
 ![mimimal overview](/image/minimal-re-use-overview.mmd.png)
 
@@ -22,13 +22,15 @@ CCD would not be used in order to achieve a cleaner architecture, better perform
 
 Using a [Domain Driven](https://en.wikipedia.org/wiki/Domain-driven_design) approach a single API could provide the functionality required to manage cases, as opposed to being split between two tightly coupled service: CCD and the Case Orchestrator. This avoids the current requirement to coordinate releases of APIs and CCD definition changes across multiple teams.
 
-CCD does not currently meet the CFT non-functional requirements and is frequently the cause of performance issues. Implementing the case service as a single API would reduce the number of HTTP calls, potentially improving performance and move away from a complicated callback model.
+CCD does not currently meet the CFT non-functional requirements and is frequently the cause of performance issues. Implementing the case service as a single API would reduce the number of HTTP calls, potentially improve performance and move away from a complicated callback model.
 
 The CCD team currently have a backlog of over 1500 issues and getting them to implement features involves complicated coordination that is not possible in the timescales required for the project.
 
 There is a code freeze that will come into affect from December 2020 to April 2021 meaning any common components will be unable to support new features or changes required for this project. By minimizing the number of common components in use it would be possible to mitigate the impact of this code freeze.
 
-By not tightly coupling to CCD it would also be possible to avoid ExUI which has its own lengthy backlog. This would allow the team to build a UI that was specific to no fault divorce without having to wait for another team to implement changes.
+By not tightly coupling to CCD it would also be possible to avoid using ExUI which has its own lengthy backlog. This would allow the team to build a UI that was specific to no fault divorce without having to wait for another team to implement changes.
+
+A simpler architecture would result in a lower maintenance cost and having a custom case service would allow the team to implement new features for the Divorce service faster.
 
 ### Disadvantages
 
@@ -78,10 +80,18 @@ Any changes to common components, such as CCD, would block the project and preve
 
 The current CCD definition file will be actively developed until January and the codebases will likely be developed beyond that so picking a point to fork from may be difficult.
 
-## 3) Maximum re-use
+## Maximum re-use
 
 This approach also leverages as much existing code as possible but also ties the infrastructure together with the existing divorce service so that any changes that impact both types of divorce can be implemented in a single location.
 
+[diagram]
+
 Create new CCD case type based on the existing one. Modify existing services to support both case types.
+
+### Advantages
+
+
+
+### Disadvantages
 
 100 PRs on the Orchestrator a month from three separate teams.

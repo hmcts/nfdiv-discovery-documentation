@@ -1,6 +1,6 @@
 # Overview of Divorce Service
 
-The current divorce service was one of the first delivered as part of CFT Reform. It has been developed and maintained by multiple suppliers during it's lifetime and currently has three teams actively working on it.
+The current divorce service was one of the first delivered as part of CFT Reform. It has been developed and maintained by multiple suppliers during its lifetime and currently has three teams actively working on it.
 
 ## System overview
 
@@ -89,7 +89,7 @@ There is a [helm product chart](https://github.com/hmcts/chart-div) but it is no
 
 ### Definition file
 
-The CCD definition file is maintained in it's [own codebase](https://github.com/hmcts/div-ccd-definitions) that has a build pipeline that automates deployment of any changes to the definition file to AAT.
+The CCD definition file is maintained in its [own codebase](https://github.com/hmcts/div-ccd-definitions) that has a build pipeline that automates deployment of any changes to the definition file to AAT.
 
 There are some automated regression tests that log in to CCD and upload the definition file. It's not clear whether the intention is to expand that and add tests that start progressing cases.
 
