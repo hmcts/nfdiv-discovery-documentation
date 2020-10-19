@@ -114,7 +114,6 @@ There are some discrepancies with the code in the CMS and the CCD definition. Th
 
 The following states in the definition file but not used in the code or mentioned in the current documentation:
 
-- AwaitingAdminClarification
 - Created
 - WelshResponseAwaitingReview
 - WelshLADecision
