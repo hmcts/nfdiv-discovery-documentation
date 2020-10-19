@@ -84,14 +84,18 @@ The current CCD definition file will be actively developed until January and the
 
 This approach also leverages as much existing code as possible but also ties the infrastructure together with the existing divorce service so that any changes that impact both types of divorce can be implemented in a single location.
 
-[diagram]
+![maximum re-use overview](/image/maximum-re-use-overview.mmd.png)
 
 Create new CCD case type based on the existing one. Modify existing services to support both case types.
 
 ### Advantages
 
-
+This approach would potentially reduce the amount of work required to any changes that affected both types of divorce.
 
 ### Disadvantages
 
-100 PRs on the Orchestrator a month from three separate teams.
+While there are some cases where changes can be made across both types of divorce there would still be many cases that led to making the same change in multiple parts of the codebase.
+
+Increased complexity in the codebase. Supporting two case types in a single codebase has not been tried before and might have unexpected challenges.
+
+Coordination. 100 PRs on the Orchestrator a month from three separate teams.
