@@ -6,11 +6,13 @@ The current divorce service was one of the first delivered as part of CFT Reform
 
 The system is comprised of six APIs written in Java and four frontends written in node.js. It makes use of several common components provided by the platform.
 
-There is up to date documentation that provides a system overview so one has been created by inspecting the dependencies at code level. For clarity interactions with IDAM and the service auth provider were not included.
+There is no up to date documentation that provides a system overview so one has been created by inspecting the dependencies at code level. For clarity interactions with IDAM and the service auth provider were not included.
 
 ![divorce overview](/image/as-is-overview.mmd.png)
 
 The Swagger docs for the APIs have not been updated for two years and are likely not relevant any more.
+
+The ["Quality Dashboard"](https://tools.hmcts.net/confluence/display/~ben.pitkin/Tech+Dashboard+-+V1) shows divorce as either red or amber in all categories, although this is true of most services.
 
 ### Frontends
 
@@ -29,7 +31,7 @@ The frontends have been integrated with CTSC Chat, PCQ and have a Welsh language
 
 The Case Orchestrator is the primary service within Divorce. It is currently maintained by three separate teams and receives over 100 pull requests a month.
 
-It is primarily responsible for managing the state transitions of cases in CCD. It handles all CCD callbacks.
+It is responsible for managing the state transitions of cases in CCD. It handles all CCD callbacks.
 
 The Case Orchestrator has a number of Quartz Scheduler jobs that are stored in a postgres database.
 
@@ -43,9 +45,11 @@ It was added after the Case Orchestrator was created and so further investigatio
 
 Given the tightly coupled nature of CCD and the Case Orchestrator it does not seem a worthwhile venture trying to add a layer of abstraction between them. Especially as the Case Orchestrator handles the callbacks from CCD.
 
+The Case Maintenance Service also provides an abstraction for the Draft Store.
+
 ### Case Formatter Service ([CFS](https://github.com/hmcts/div-case-data-formatter))
 
-The Case Formatter does some minimal cleaning of case data. The Tech Lead has tried to remove this service but was unable to do so before being moved on to delivering features.
+The Case Formatter does some minimal cleaning of case data. The Tech Lead has tried to remove this service but was unable to do so before being moved on to delivering more features.
 
 It is understood that the functionality this service delivers is trivial, such as removing duplicate documents from a list of documents.
 
@@ -53,9 +57,7 @@ The Tech Lead believes it should be collapsed into the Case Orchestrator Service
 
 ### Document Generation Service ([DGS](https://github.com/hmcts/div-document-generator-client))
 
-The Document Generation Service is a proxy in front of the Docmosis common component.
-
-It may also house some legacy HTML templates.
+The Document Generation Service is a proxy in front of the Docmosis common component. It  also houses some HTML templates.
 
 The Tech Lead feels that this service does provide some value by aiding in debugging and regenerating documents.
 
@@ -69,9 +71,9 @@ The Tech Lead does not believe it required.
 
 ### Fees and Pay Service ([FPS](https://github.com/hmcts/div-fees-and-payments-service))
 
-A proxy API in front of the Fees API. It appears to be used so that fees can be references without using a fee code.
+A proxy API in front of the Fees API. It is used to access fees without using fee codes.
 
-Usefulness unclear.
+It would be better delivered as a library.
 
 ## Approach to development
 
@@ -81,7 +83,7 @@ The divorce team are looking to reduce the number of integration tests as unreli
 
 ## Infrastructure and pipelines
 
-The divorce service has uses the standard CFT Reform approach to infrastructure. The [shared-infrastructure](https://github.com/hmcts/div-shared-infrastructure) deploys a shared vault and appinsights instance. There is also an [action group mailing list](https://github.com/hmcts/div-shared-infrastructure/blob/master/action-groups.tf).
+The divorce service uses the standard CFT Reform approach to infrastructure. The [shared-infrastructure](https://github.com/hmcts/div-shared-infrastructure) deploys a shared vault and appinsights instance. There is also an [action group mailing list](https://github.com/hmcts/div-shared-infrastructure/blob/master/action-groups.tf).
 
 There is a [helm product chart](https://github.com/hmcts/chart-div) but it is not used by any of the divorce services.
 

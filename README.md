@@ -6,4 +6,4 @@ This repository contains the documentation generated during the No Fault Divorce
 
 - [As is service](/as-is.md)
 - [No fault divorce options](/options.md)
-- Proposed solution in detail
+- [Proposed solution in detail](/solution.md)
