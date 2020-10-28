@@ -54,7 +54,7 @@ The majority of the current case type still applies to no fault divorces so the 
 
 The petitioner and respondent frontends will be re-written as they are based on legacy libraries and will have to change significantly to support joint applications.
 
-The respondent, decree nisi and decree absolute frontends can be forked as they only require language changes.
+The decree nisi and decree absolute frontends only offer a small amount of functionality and can be rolled into the new frontend in order simplify the architecture and reduce the cost of maintenance.
 
 The Case Formatter is already deemed surplus to requirements by the current divorce team and removing it will solve some long standing technical debt. Likewise, the Evidence Management Client API only exists for historical purposes and can be removed to reduce the maintenance cost.  
 

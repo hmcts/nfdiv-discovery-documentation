@@ -1,14 +1,8 @@
 graph TD
 
   subgraph Divorce
-    Petitioner
-    class Petitioner newService
-    Respondent
-    class Respondent newService
-    DecreeNisi
-    class DecreeNisi forkedService
-    DecreeAbsolute
-    class DecreeAbsolute forkedService
+    CitizenFrontend
+    class CitizenFrontend newService
 
     CaseOrchestrator
     class CaseOrchestrator forkedService
@@ -19,10 +13,7 @@ graph TD
 
     DivFeesAndPay
 
-    Petitioner-->CaseOrchestrator
-    Respondent-->CaseOrchestrator
-    DecreeNisi-->CaseOrchestrator
-    DecreeAbsolute-->CaseOrchestrator
+    CitizenFrontend-->CaseOrchestrator
 
     CaseOrchestrator-->CaseMaintenance
     CaseOrchestrator-->DivFeesAndPay
